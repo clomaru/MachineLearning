@@ -32,7 +32,9 @@ testX = testX.values.reshape(-1,1)
 model1 = LR()
 model1.fit(trainX, trainY)
 coef = model1.coef_
+coef
 intercept = model1.intercept_
+intercept
 
 pred = model1.predict(testX)
 
