@@ -1,7 +1,8 @@
-'''
-tensorflow: simple_regression_analysis
-逆行列法を用いる
-'''
+# TensoFlow
+# simple regression analysis
+# 逆行列法を用いる
+#----------------------------------
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,15 +11,19 @@ import tensorflow as tf
 
 sess = tf.Session()
 
-'''
-データ読み込み
-'''
+
+###
+# データ読み込み
+###
+
 train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
 
-'''
-データを作成
-'''
+
+###
+# データを作成
+###
+
 trainX = train['temperature']
 trainY = train['y']
 
@@ -39,9 +44,11 @@ XT_X = tf.matmul(tf.transpose(X_tensor), X_tensor)
 product = tf.matmul(tf.matrix_inverse(XT_X), tf.transpose(X))
 solution = tf.matmul(product, y_tensor)
 
-'''
-演算の実行
-'''
+
+###
+# 演算の実行
+###
+
 solution_eval = sess.run(solution)
 
 coef = solution_eval[1][0]
@@ -49,9 +56,11 @@ intercept = solution_eval[0][0]
 print('coef: {}'.format(coef))
 print('intercept: {}'.format(intercept))
 
-'''
-可視化
-'''
+
+###
+# 可視化
+###
+
 best_fit = []
 for i in trainX:
     best_fit.append(coef * i + intercept)
