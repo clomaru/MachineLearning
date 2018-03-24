@@ -48,12 +48,6 @@ pred = model1.predict(testX)
 # 可視化
 ###
 
-# y = ax + b の式を作成
-func = lambda x: x * coef + intercept
-line = lines.Line2D([0,40],[func(0), func(40)], color='r')
-
-fig = plt.figure()
-ax = fig.add_subplot(1,1,1)
-ax.add_line(line)
-ax.scatter(x=trainX, y=trainY)
-fig.show()
+plt.scatter(x=trainX, y=trainY)
+plt.plot(trainX, model1.predict(trainX), color="red")
+plt.show()
